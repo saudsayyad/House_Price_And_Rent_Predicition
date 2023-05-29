@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+
+    {% block content %}
+            <div class="profile" style="border-radius: .5rem;">
+                  <div style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="Avatar" style="width: 100px;" />
+                    <h2>{{ account['firstname'] }} {{ account['lastname'] }}</h2>
+                    <p></p>
+                  </div>
+            <div>
+                      <h4>Admin #{{ account['id'] }} </h4>
+                        <div>
+                          <b>Email</b>
+                          <p>{{ account['email'] }}</p>
+                        </div>
+                        <div>
+                          <b>Phone</b>
+                          <p>{{ account['phone'] }}</p>
+                        </div>
+                        <a href="{{ url_for('logout') }}" class="signout-link" style="text-decoration: none; color: rgba(255, 255, 255, 0.807);">
+                            <svg viewBox="0 0 24 24" width="24" height="24" class="signout-icon">
+                              <path fill="currentColor" d="M16.59,7.41L15.17,6l-4,4H20v2H11.17l4,4L16.59,17l-5-5Z"></path>
+                              <path fill="none" d="M0,0H24V24H0Z"></path>
+                            </svg>
+                            <span class="signout-text">Logout</span>
+                        </a>
+                        <!-- <a href="{{ url_for('logout') }}" style="text-decoration: none; color: rgba(255, 255, 255, 0.807);">Logout</a> -->
+            </div>
+            </div>
+            <style>
+                .signout-link {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: #333;
+                }
+
+                .signout-icon {
+                margin-right: 10px;
+                }
+
+                .signout-text {
+                font-size: 16px;
+                }
+
+                .signout-text:hover{
+                    text-decoration:underline;
+                }
+            </style>
+      {% endblock %}

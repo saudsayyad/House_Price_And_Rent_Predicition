@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>House Rent Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-nBgsi+b55ZDjnGZ+CVKXJXzL2ifgPdHAdGGKc/w1ktnly+hduLrdD0AnZ+ygiGjzrYX+i2oifoxfjKQatn68nQ==" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+
+    <body class="background">
+
+        <!-- Navigation -->
+        <div class="nav">
+            <div class="nav-header">
+                <div class="nav-title" id="title">
+                    <a href="{{ url_for('index')}}" style="text-decoration: none;color:cyan;"><b>HOUSE PRICE AND RENT PREDICTION</b></a>
+                </div>
+            </div>            
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}">Home<span class="sr-only">(current)</span></a>
+                <a href="{{ url_for('login') }}">Login (Admin)</a>
+                <a href="{{ url_for('contact') }}">Contact us</a>
+                <a href="{{ url_for('about') }}">About</a>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="container">
+            <div class="title"><h3>HOUSE RENT PREDICTION</h3></div>
+            <div class="content">
+            <form action="{{ url_for('predict_rent')}}" method="post">    
+                <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Select City</span>
+                    <select name="city" id="city" required="required">
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Bangalore">Bangalore</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Kolkata">Kolkata</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Pune">Pune</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <span class="details">Enter Area (square feet)</span>
+                    <input id="area" name="area" type="number" placeholder="Area" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Enter No. of Bedrooms</span>
+                    <input id="bedroom" name="bedroom" type="number" placeholder="Bedrooms" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Enter No. of Bathrooms</span>
+                    <input id="bathroom" name="bathroom" type="number" placeholder="Bathrooms" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Select Property Type</span>
+                    <select name="property_type" id="property" required="required">
+                        <option value="Apartment">Apartment</option>
+                        <option value="Independent Floor">Independent Floor</option>
+                        <option value="Independent House">Independent House</option>
+                        <option value="Studio Apartment">Studio Apartment</option>
+                        <option value="Villa">Villa</option>
+                        <option value="Penthouse">Penthouse</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <span class="details">Select Furnishing Type</span>
+                    <select name="furnish_type" id="furnish" required="required">
+                        <option value="Furnished">Furnished</option>
+                        <option value="Semi-Furnished">Semi-Furnished</option>
+                        <option value="Unfurnished">Unfurnished</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <span class="details">Select Layout Type</span>
+                    <select name="layout_type" id="layout" required="required">
+                        <option value="BHK">BHK</option>
+                        <option value="RK">RK</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <span class="details">Select Seller Type</span>
+                    <select name="seller_type" id="seller" required="required">
+                        <option value="Agent">Agent</option>
+                        <option value="Builder">Builder</option>
+                        <option value="Owner">Owner</option>
+                    </select>
+                </div>
+                </div>
+                <div class="button">
+                <input id="sub" type="submit" value="Calculate the Rent Price">
+                </div>
+            </form>
+            </div>
+        </div>
+        <style>
+            .container{
+            max-width: 675px;
+            width: 100%;
+            background-color: #000000;
+            color: white;
+            margin-top: 20px;
+            margin-left: 420px;
+            padding: 10px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(255, 255, 255, 0.15);
+            }
+
+            .container .title{
+            text-align: center;
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+
+            }
+
+            .content .user-details{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 0 12px 0;
+            }
+            .user-details .input-box{
+            margin-bottom: 15px;
+            width: calc(100% / 2 - 20px);
+            }
+            .input-box span.details{
+            display: block;
+            font-weight: 500;
+            margin-bottom: 10px;
+            }
+            .user-details .input-box input{
+            height: 40px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+            }
+            .user-details .input-box input:focus,
+            .user-details .input-box input:valid{
+            border-color: #9b59b6;
+            }
+
+            #city{
+            width: 100%;
+            outline: none;
+            height: 40px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+            }
+            #city:hover {
+            background-color: #5fae9f;
+            }
+            
+            #property{
+            width: 100%;
+            outline: none;
+            height: 40px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+            }
+            #property:hover {
+            background-color: #5fae9f;
+            }
+
+            #furnish{
+            width: 100%;
+            outline: none;
+            height: 40px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+            }
+            #furnish:hover {
+            background-color: #5fae9f;
+            }
+
+            #layout{
+            width: 100%;
+            outline: none;
+            height: 40px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+            }
+            #layout:hover {
+            background-color: #5fae9f;
+            }
+
+            #seller{
+            width: 100%;
+            outline: none;
+            height: 40px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+            }
+            #seller:hover {
+            background-color: #5fae9f;
+            }
+
+
+            .button{
+            height: 40px;
+            margin: 18px 0
+            }
+            .button input{
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg,turquoise, #9b59b6);
+            }
+            form .button input:hover{
+            /* transform: scale(0.99); */
+            background: linear-gradient(-45deg, turquoise, #9b59b6);
+            }
+            @media(max-width: 584px){
+            .container{
+            max-width: 100%;
+            }
+            .user-details .input-box{
+                margin-bottom: 15px;
+                width: 100%;
+            }
+            .category{
+                width: 100%;
+            }
+            .content .user-details{
+                max-height: 300px;
+                overflow-y: scroll;
+            }
+            .user-details::-webkit-scrollbar{
+                width: 5px;
+            }
+            }
+            @media(max-width: 459px){
+            .container .content .category{
+                flex-direction: column;
+            }
+            }
+        </style>
+                
+        <div class="link">
+            <a href="https://www.linkedin.com/in/saudsayyad/" target="_blank" class="linkedin"></a>
+            <a href="https://www.linkedin.com/in/saudsayyad/" target="_blank" class="github"></a>
+        </div>
+
+
+        <style>
+       
+            .background {
+                background-image: url("../static/background.jpg");
+                height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }       
+    
+            /* NavBar */
+            @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+    
+            * {
+            box-sizing: border-box;
+            font-family: Roboto;
+            }
+    
+            body {
+            margin: 0px;
+            font-family: 'segoe ui';
+            background-color: black;
+            }
+    
+            .nav {
+            position: relative
+            }
+    
+            #title:visited{
+                color: inherit
+            }
+            .nav > .nav-header {
+            display: inline;
+            }
+    
+            .nav > .nav-header > .nav-title {
+            display: inline-block;
+            font-size: 30px;
+            font-weight: bold;
+            color: cyan;
+            text-decoration: none;
+            padding: 30px 0px 20px 50px;
+            }
+    
+            .nav > .nav-btn {
+            display: none;
+            }
+    
+            .nav > .nav-links {
+            display: inline;
+            float: right;
+            font-size: 20px;
+            /* padding: 0px 10px 10px 10px; */
+            }
+    
+            .nav > .nav-links > a {
+            display: inline-block;
+            font-size: 20px;
+            padding: 35px 50px 25px 0px;
+            text-decoration: none;
+            color: #efefef;
+            }
+    
+            .nav > .nav-links > a:hover{
+                text-decoration:underline;
+            }
+    
+            .nav > #nav-check {
+            display: none;
+            }
+    
+            @media (max-width:600px) {
+            .nav > .nav-btn {
+            display: inline-block;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            }
+            .nav > .nav-btn > label {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            padding: 13px;
+            }
+            .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+            background-color: rgba(0, 0, 0, 0.3);
+            }
+            .nav > .nav-btn > label > span {
+            display: block;
+            width: 25px;
+            height: 10px;
+            border-top: 2px solid #eee;
+            }
+            .nav > .nav-links {
+            position: absolute;
+            display: block;
+            width: 100%;
+            background-color: #333;
+            height: 0px;
+            transition: all 0.3s ease-in;
+            overflow-y: hidden;
+            top: 50px;
+            left: 0px;
+            }
+            .nav > .nav-links > a {
+            display: block;
+            width: 100%;
+            }
+            .nav > #nav-check:not(:checked) ~ .nav-links {
+            height: 0px;
+            }
+            .nav > #nav-check:checked ~ .nav-links {
+            height: calc(100vh - 50px);
+            overflow-y: auto;
+            }
+            }
+            .linkedin:before {
+                content: "\f0e1";
+                font-family: FontAwesome;
+                color: #0077B5;
+                font-size: 20px;
+                margin-left: 5px;
+                background-color: rgb(209, 209, 209);
+                padding: 5px;
+                border-radius: 5px;
+            }
+            .github:before {
+                content: "\f09b";
+                font-family: FontAwesome;
+                color: #000;
+                font-size: 20px;
+                background-color: rgb(209, 209, 209);
+                padding: 5px;
+                border-radius: 5px;
+            }
+
+            .link{
+            margin-top: 30px;
+            padding-right: 30px;
+            padding-left: 30px;
+            max-width: 180px;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 20px;
+            color: #ffffff;
+            line-height: 30px;
+            transition:all 0.1s;
+            }
+
+            .link a:hover{transform:scale(1.1); -webkit-transform:scale(1.1);}
+        </style>
+    
+        </body>
+</html>
+v

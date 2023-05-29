@@ -1,0 +1,12 @@
+Bedrooms,Area,Bathrooms,is_ready_to_move,property_status_verified,is_RERA_registered,is_studio,property_type_Apartment,property_type_Independent_Floor,property_type_Independent_House,property_type_Residential_Plot,property_type_Villa,furnish_type_Furnished,furnish_type_Semi_Furnished,furnish_type_Unfurnished,city_Ahmedabad,city_Bangalore,city_Chennai,city_Delhi,city_Hyderabad,city_Kolkata,city_Lucknow,city_Mumbai
+5,2000,5,1,0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+5,2000.0,5,1,0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+2,2000.0,5,1,0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+4,2000.0,4,1,0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+4,2000.0,4,1,0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+8,2000.0,7,0,0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+2,2000.0,2,1,0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+3,2000.0,4,1,0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+3,2000.0,4,1,0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+3,2000.0,4,1,0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+3,1560.0,3,1,0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0

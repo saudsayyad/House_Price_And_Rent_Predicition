@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Login</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-nBgsi+b55ZDjnGZ+CVKXJXzL2ifgPdHAdGGKc/w1ktnly+hduLrdD0AnZ+ygiGjzrYX+i2oifoxfjKQatn68nQ==" crossorigin="anonymous" />
+        <link href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+
+    <body class="background">
+
+
+        <!-- Navigation -->
+        <div class="nav">
+            <div class="nav-header">
+                <div class="nav-title">
+                    <a href="{{ url_for('index') }}" style="text-decoration: none;color:cyan;"><b>HOUSE PRICE AND RENT PREDICTION</b></a>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}">Home</a>
+                <!-- <a href="{{ url_for('register') }}">Register (Admin)</a> -->
+                <a href="{{ url_for('contact') }}">Contact us</a>
+                <a href="{{ url_for('about') }}">About</a>
+            </div>
+            </div>
+<br><br><br><br>
+
+        
+    
+
+        <div class="container">
+            <div class="title">Sign in</div>
+            <div class="content">
+            <form action="{{ url_for('login') }}" method="POST">
+            <!-- <form action="{{ url_for('login') }}" method="POST"  target="_blank"> -->
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <label for="email" class="sr-only"></label>
+                        <input type="email" name="email" id="inputEmail" maxlength="45" class="form-control" placeholder="Email address" required autofocus><br>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <label for="password" class="sr-only"></label>
+                        <input type="password" name="password" id="inputPassword" maxlength="45" class="form-control" placeholder="Password" required><br>
+                    </div>
+                    <div class="msg">{{ msg }}</div>  
+                    <!-- <a href="ForgotPassword.html" style="text-decoration: none;color:rgb(210, 221, 233); text-align: center;">Forgot Password?</a> -->
+                    <div class="button">
+                        <input type="submit" name="login" value="Sign in">
+                        <!-- <button class="submit" name="login" type="submit">Sign in</button> -->
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <style>
+            .container{
+                    max-width: 400px;
+                    width: 100%;
+                    background-color: #000000;
+                    color: white;
+                    margin-left: 560px;
+                    padding-top: 25px;
+                    border-radius: 5px;
+                    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.15);
+                }
+
+            .container .title{
+                    text-align: center;
+                    font-size: 25px;
+                    font-weight: 500;
+                    position: relative;
+                    padding-bottom: 20px;
+                }
+                .content form .user-details{
+                    margin-left: 50px;
+                    /* margin-right: 50px; */
+                }
+                form .user-details .input-box{
+                margin-bottom: 15px;
+                width: 80%;
+                }
+                form .input-box span.details{
+                font-weight: 500;
+                }
+
+                .user-details .input-box input{
+                height: 45px;
+                width: 100%;
+                outline: none;
+                font-size: 16px;
+                border-radius: 5px;
+                padding-left: 15px;
+                border: 1px solid #ccc;
+                border-bottom-width: 2px;
+                transition: all 0.3s ease;
+                }
+                .user-details .input-box input:focus,
+                .user-details .input-box input:valid{
+                border-color: #9b59b6;
+                }
+
+                .content form .user-details .button{
+                    height: 100px;
+                    margin: 20px 0;
+                    padding-bottom: 50px;
+                }
+
+                form .button input{
+                    font-family: Arial, Helvetica, sans-serif;
+                    height: 45px;
+                    width: 80%;
+                    border-radius: 5px;
+                    border: none;
+                    color: #fff;
+                    font-size: 18px;
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    background: linear-gradient(45deg,turquoise, #9b59b6);
+                }
+
+                form .button input:hover{
+                    background: linear-gradient(-45deg,turquoise, #9b59b6);
+                }
+
+                @media(max-width: 584px){
+                .container{
+                max-width: 100%;
+                }
+                form .user-details .input-box{
+                    margin-bottom: 15px;
+                    width: 100%;
+                }
+                form .category{
+                    width: 100%;
+                }
+                .content form .user-details{
+                    max-height: 300px;
+                    overflow-y: scroll;
+                }
+                .user-details::-webkit-scrollbar{
+                    width: 5px;
+                }
+                }
+                @media(max-width: 459px){
+                .container .content .category{
+                    flex-direction: column;
+                }
+                }
+        </style>    
+
+<br><br>
+        <!-- Footer -->
+		<footer class="footer-distributed">
+			<div class="footer-right">
+                <a href="https://www.linkedin.com/in/saudsayyad/" target="_blank" class="linkedin"></a>
+                <a href="https://www.linkedin.com/in/saudsayyad/" target="_blank" class="github"></a>
+			</div>
+			<div class="footer-left">
+				<p class="footer-links">
+					<a href="{{ url_for('index') }}">Home</a>
+					<a href="{{ url_for('about') }}">About</a>
+					<a href="{{ url_for('contact') }}">Contact us</a>
+				</p>
+				<p>House Price and Rent Prediction &copy; 2023</p>
+                <p class="id">Group ID 39</p>
+			</div>
+		</footer>
+    
+    <style>
+        
+        .background {
+            background-image: url("../static/background.jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* NavBar */
+
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+        * {
+        box-sizing: border-box;
+        font-family: Roboto;
+        }
+
+        body {
+        margin: 0px;
+        font-family: 'segoe ui';
+        background-color: black;
+        color: white;
+        }
+
+        .nav > .nav-header {
+        display: inline;
+        }
+
+        .nav > .nav-header > .nav-title {
+        display: inline-block;
+        font-size: 30px;
+        color: cyan;
+        padding: 30px 0px 20px 50px;
+        }
+
+        .nav > .nav-btn {
+        display: none;
+        }
+
+        .nav > .nav-links {
+        display: inline;
+        float: right;
+        font-size: 20px;
+        /* padding: 0px 10px 10px 10px; */
+        }
+
+        .nav > .nav-links > a {
+        display: inline-block;
+        font-size: 20px;
+        padding: 35px 50px 25px 0px;
+        text-decoration: none;
+        color: #efefef;
+        }
+
+        .nav > .nav-links > a:hover{text-decoration:underline;}
+
+        .nav > #nav-check {
+        display: none;
+        }
+
+        @media (max-width:600px) {
+        .nav > .nav-btn {
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        }
+        .nav > .nav-btn > label {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        padding: 13px;
+        }
+        .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+        background-color: rgba(0, 0, 0, 0.3);
+        }
+        .nav > .nav-btn > label > span {
+        display: block;
+        width: 25px;
+        height: 10px;
+        border-top: 2px solid #eee;
+        }
+        .nav > .nav-links {
+        position: absolute;
+        display: block;
+        width: 100%;
+        background-color: #333;
+        height: 0px;
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+        top: 50px;
+        left: 0px;
+        }
+        .nav > .nav-links > a {
+        display: block;
+        width: 100%;
+        }
+        .nav > #nav-check:not(:checked) ~ .nav-links {
+        height: 0px;
+        }
+        .nav > #nav-check:checked ~ .nav-links {
+        height: calc(100vh - 50px);
+        overflow-y: auto;
+        }
+        }
+
+
+
+
+
+
+        /* Footer */
+        .footer-distributed {
+        position: absolute;
+        bottom: 0;
+        clear: both;
+        height: 120px;
+        width: 100%;
+        text-align: left;
+        margin: 0px 0px 0px 0px;
+        font-family: 'segoe ui';
+        padding: 20px 0px 10px 80px;
+        }
+        .footer-distributed .footer-left p {
+        color: #8f9296;
+        font-size: 14px;
+        text-align: center;
+        margin: 0;
+        padding-top: 5px;
+        }
+        /* Footer links */
+
+        .footer-distributed p.footer-links {
+        font-size: 18px;
+        font-weight: bold;
+        color: silver;
+        padding-top: 5;
+        padding: 0;
+        transition: ease .25s;
+        }
+
+        .id{
+            padding-right: 80px;
+        }
+
+        .footer-distributed p.footer-links a {
+        display: inline-block;
+        color: cyan;
+        padding-right: 0px;
+        line-height: 1.8;
+        text-decoration: none;
+        color: inherit;
+        transition: ease .25s;
+        }
+
+        .footer-distributed .footer-links a:before {
+        content: "·";
+        font-size: 20px;
+        left: 0;
+        color: silver;
+        display: inline-block;
+        padding-right: 5px;
+        }
+
+        .linkedin:before {
+			content: "\f0e1";
+			font-family: FontAwesome;
+			color: #0077B5;
+			font-size: 20px;
+			margin-right: 5px;
+			margin-left: 5px;
+		}
+		.github:before {
+			content: "\f09b";
+			font-family: FontAwesome;
+			color: #000;
+			font-size: 20px;
+			margin-right: 5px;
+			margin-left: 5px;
+        }
+
+
+
+        .footer-distributed .footer-right {
+        float: right;
+        margin-top: 30px;
+        margin-right: 0px;
+        padding-right: 30px;
+        max-width: 180px;
+        }
+
+        .footer-distributed .footer-right a {
+        display: inline-block;
+        background-color: rgb(209, 209, 209);
+        border-radius: 5px;
+        font-size: 20px;
+        color: #ffffff;
+        line-height: 30px;
+        margin-left: 3px;
+        transition:all 0.1s;
+        }
+
+        .footer-distributed .footer-right a:hover{transform:scale(1.1); -webkit-transform:scale(1.1);}
+
+        .footer-distributed p.footer-links a:hover{text-decoration:underline;}
+
+        /* Media Queries */
+
+        @media (max-width: 600px) {
+        .footer-distributed .footer-left, .footer-distributed .footer-right {
+            text-align: center;
+        }
+        .footer-distributed .footer-right {
+            float: none;
+            margin: 0 auto 0px;
+        }
+        .footer-distributed .footer-left p.footer-links {
+            line-height: 1.8;
+        }
+        }
+    </style>
+
+    </body>
+</html>
