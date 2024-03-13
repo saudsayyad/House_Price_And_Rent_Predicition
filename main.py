@@ -22,10 +22,10 @@ rent_model = pickle.load(open('random_forest_regression_rent_model_V2 (1).pkl','
 app.secret_key = 'Admin@HousePricePrediction'
 
 ### Database Connection
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Saud@191214'
-app.config['MYSQL_DB'] = 'Project'
+app.config['MYSQL_HOST'] = '*********'
+app.config['MYSQL_USER'] = '****'
+app.config['MYSQL_PASSWORD'] = '***********'
+app.config['MYSQL_DB'] = '********'
 
 # Intialize MySQL
 mysql = MySQL(app)
