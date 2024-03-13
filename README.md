@@ -4,5 +4,5 @@
 
 <h4>2 different ml models for price and rent prediction</h4>
 <h4>Random Forest Regressor for Rent Prediction</h4>
-<h4>XG Boost (eXtreme Gradient Boosting) for Price Prediction</h4>
+<h4>XG Boost (eXtreme Gradient Boost) Regressor for Price Prediction</h4>
 <h4>Used Web Scraping to get real-time data from <b><i>Makaan</i></b> housing website</h4>
