@@ -15,11 +15,9 @@ import xgboost
 app = Flask(__name__)
 price_model = pickle.load(open('xgb_regression_model.pkl','rb'))
 rent_model = pickle.load(open('random_forest_regression_rent_model_V2 (1).pkl','rb'))
-# price_model = 123
-# rent_model = 324
 
 ### Flask Secret Key
-app.secret_key = 'Admin@HousePricePrediction'
+app.secret_key = '****************************'
 
 ### Database Connection
 app.config['MYSQL_HOST'] = '*********'
